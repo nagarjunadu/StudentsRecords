@@ -1,1 +1,12 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentsRecords.Views.AboutPage"
+             Title="About">
+    <VerticalStackLayout>
+        <Label 
+            Text=" wsu This is the place where anything is possible. Where collaboration and innovative ideas shape the future, and entrepreneurship is in our bones. If you have the creativity, passion and insight to help us build a brighter future for our city, state and world—this is the place where you belong."
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
