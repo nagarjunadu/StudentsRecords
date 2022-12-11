@@ -9,6 +9,20 @@ namespace StudentsRecords;
 public partial class MainPage : ContentPage
 {
     ObservableCollection<Student> studentslist = new ObservableCollection<Student>();
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+        var students = await App.Database.GetStudentsAsync();
+        if (students.Count == 0)
+        {
+            APICall();
+        }
+
+        StudentsListview.ItemsSource = null;
+        studentslist.Clear();
+        studentslist = new ObservableCollection<Student>(await App.Database.GetStudentsAsync());
+        StudentsListview.ItemsSource = studentslist;
+    }
     public MainPage(MainPageViewModel viewModel)
     {
         BindingContext = viewModel;
@@ -49,20 +63,7 @@ public partial class MainPage : ContentPage
             }
         };
     }
-    protected async override void OnAppearing()
-    {
-        base.OnAppearing();
-        var students = await App.Database.GetStudentsAsync();
-        if (students.Count == 0)
-        {
-            APICall();
-        }
-
-        StudentsListview.ItemsSource = null;
-        studentslist.Clear();
-        studentslist = new ObservableCollection<Student>(await App.Database.GetStudentsAsync());
-        StudentsListview.ItemsSource = studentslist;
-    }
+   
 
     private const string url = "https://10.0.2.2:7025/students";
     private HttpClient _Client;
