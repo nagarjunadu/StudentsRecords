@@ -55,6 +55,17 @@ namespace StudentsRecords.ViewModels
         }
 
         private int _Studentid;
+        
+
+        public override Task OnNavigatingTo(object? parameter)
+        {
+            var student = parameter as Student;
+            StudentName = student.studentname;
+            StudentCourse = student.studentcourse;
+            StudentAge = student.studentage;
+            Studentid = student.studentid;
+            return base.OnNavigatingTo(parameter);
+        }
         public int Studentid
         {
             get => _Studentid;
@@ -66,16 +77,6 @@ namespace StudentsRecords.ViewModels
                     OnPropertyChanged();
                 }
             }
-        }
-
-        public override Task OnNavigatingTo(object? parameter)
-        {
-            var student = parameter as Student;
-            StudentName = student.studentname;
-            StudentCourse = student.studentcourse;
-            StudentAge = student.studentage;
-            Studentid = student.studentid;
-            return base.OnNavigatingTo(parameter);
         }
     }
 
