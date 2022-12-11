@@ -1,27 +1,37 @@
-﻿ using System;
-using StudentsRecords.Contracts.Services;
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentsRecords.MainPage">
 
-namespace StudentsRecords.ViewModels
-{
-    public class MainPageViewModel : ViewModelBase
-    {
-        readonly INavigationService _navigationService;
+    <ListView x:Name="StudentsListview" RowHeight="50" SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame BorderColor="Orange"
+                            CornerRadius="5"
+                            HasShadow="True"
+                           Padding="5"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand">
+                        <Grid HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding studentname}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Column="1" Text="{Binding studentcourse}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Column="2" Text="{Binding studentage}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                        </Grid>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 
-        public Command NavigateToAddStudentPageCommand
-            => new Command(async () => await _navigationService.NavigateToAddStudentPage());
+</ContentPage>
 
-        public Command NavigateToAboutPageCommand
-            => new Command(async () => await _navigationService.NavigateToAboutPage());
-
-        public Command NavigateToSupportPageCommand
-            => new Command(async () => await _navigationService.NavigateToSupportPage());
-
-        public Command NavigateToEditStudentPageCommand
-            => new Command(async (e) => await _navigationService.NavigateToEditStudentPage(e as Student));
-
-        public MainPageViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-        }
-    }
-}
