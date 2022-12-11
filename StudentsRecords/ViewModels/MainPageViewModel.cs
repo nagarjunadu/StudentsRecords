@@ -7,11 +7,12 @@ namespace StudentsRecords.ViewModels
     {
         readonly INavigationService _navigationService;
 
-        public Command NavigateToAddStudentPageCommand
-            => new Command(async () => await _navigationService.NavigateToAddStudentPage());
-
+       
         public Command NavigateToAboutPageCommand
             => new Command(async () => await _navigationService.NavigateToAboutPage());
+        public Command NavigateToAddStudentPageCommand
+           => new Command(async () => await _navigationService.NavigateToAddStudentPage());
+
 
         public Command NavigateToSupportPageCommand
             => new Command(async () => await _navigationService.NavigateToSupportPage());
