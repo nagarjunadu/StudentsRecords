@@ -41,5 +41,12 @@ namespace StudentsRecords
         {
             return database.DeleteAsync(student);
         }
+
+
+
+        public Task<int> EditStudent(Student student)
+        {
+            return database.UpdateAsync(student);
+        }
     }
 }
