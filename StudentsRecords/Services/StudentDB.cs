@@ -37,5 +37,9 @@ namespace StudentsRecords
             database.Table<Student>().DeleteAsync();
             return database.InsertAllAsync(students);
         }
+        public Task<int> DeleteStudentAsync(Student student)
+        {
+            return database.DeleteAsync(student);
+        }
     }
 }
