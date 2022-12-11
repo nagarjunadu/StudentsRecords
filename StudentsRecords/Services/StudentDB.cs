@@ -32,19 +32,6 @@ namespace StudentsRecords
             }
         }
 
-        public Task<int> SaveStudentsAsync(List<Student> students)
-        {
-            database.Table<Student>().DeleteAsync();
-            return database.InsertAllAsync(students);
-        }
-        public Task<int> DeleteStudentAsync(Student student)
-        {
-            return database.DeleteAsync(student);
-        }
-
-        public Task<int> EditStudent(Student student)
-        {
-            return database.UpdateAsync(student);
-        }
+        
     }
 }
