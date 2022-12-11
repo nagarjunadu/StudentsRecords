@@ -10,13 +10,7 @@ public partial class App : Application
 {
     static StudentDB database;
     static Platforms.Android.LocalFileHelper localFileHelper;
-    public App(INavigationService navigationService)
-    {
-        InitializeComponent();
-        localFileHelper = new Platforms.Android.LocalFileHelper();
-        MainPage = new NavigationPage();
-        navigationService.NavigateToMainPage();
-    }
+   
 
     public static StudentDB Database
     {
@@ -29,6 +23,13 @@ public partial class App : Application
             return database;
         }
     }
-    
+    public App(INavigationService navigationService)
+    {
+        InitializeComponent();
+        localFileHelper = new Platforms.Android.LocalFileHelper();
+        MainPage = new NavigationPage();
+        navigationService.NavigateToMainPage();
+    }
+
 }
 
